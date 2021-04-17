@@ -4,11 +4,14 @@ const timer = document.getElementById("counter");
 const heartButton = document.getElementById("heart");
 const numberLikes = document.querySelector('.likes');
 const likedNumbers = {};
+let paused = false;
 
 function incrementTimer(){
-    let newTimer = parseInt(timer.innerText)
-    newTimer += 1
-    timer.innerText = newTimer
+    if (!paused){
+        let newTimer = parseInt(timer.innerText)
+        newTimer += 1
+        timer.innerText = newTimer
+    }
 }
 
 function decrementTimer(){
@@ -56,3 +59,17 @@ function likeNumber(){
     }
 
 }
+ // 4 As a user, I can pause the counter, which should:
+ // pause the counter
+ // disable all buttons except the pause button
+ // switch the label on the button from "pause" to "resume"
+
+ const pauseButton = document.getElementById("pause")
+ pauseButton.addEventListener('click', togglePause)
+
+ function togglePause(){
+     console.log("Paused")
+     paused = !paused
+ }
+
+ //pauseButton.innerText = "resume"
